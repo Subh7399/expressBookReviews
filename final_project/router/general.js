@@ -54,6 +54,19 @@ public_users.get('/books', async function (req, res) {
     }
   });
 
+  
+  public_users.get('/author', async function (req, res) {
+    try {
+      const response3 = await axios.get("https://subhamacharj-5000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/author/:author");
+      const AUTHOR = await response3.data;
+  
+      return res.status(200).json({ AUTHOR });
+    } catch (error) {
+      console.error('Error fetching books:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+
   public_users.get('/title', async function (req, res) {
     try {
       const response2 = await axios.get("https://subhamacharj-5000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//title/:title");
