@@ -42,6 +42,30 @@ public_users.get('/books', async function (req, res) {
     }
   });
 
+  public_users.get('/isbn', async function (req, res) {
+    try {
+      const response1 = await axios.get("https://subhamacharj-5000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/isbn/:isbn");
+      const ISBN = await response1.data;
+  
+      return res.status(200).json({ ISBN });
+    } catch (error) {
+      console.error('Error fetching books:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+
+  public_users.get('/title', async function (req, res) {
+    try {
+      const response2 = await axios.get("https://subhamacharj-5000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai//title/:title");
+      const TITLE = await response2.data;
+  
+      return res.status(200).json({ TITLE });
+    } catch (error) {
+      console.error('Error fetching books:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   //Write your code here
